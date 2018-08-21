@@ -15,6 +15,9 @@ gem 'devise', '>= 4.5'
 gem 'acts_as_votable', '~> 0.11.1'
 gem 'simple_form', '~> 4.0', '>= 4.0.1'
 gem 'record_tag_helper', '~> 1.0'
+gem 'bootstrap', '~> 4.1.3'
+gem 'sprockets-rails', :require => 'sprockets/railtie'
+gem 'jquery-rails'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
