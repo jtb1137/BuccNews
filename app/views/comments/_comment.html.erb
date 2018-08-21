@@ -1,0 +1,7 @@
+<%= div_for(comment) do %>
+  <%= comment.user.email %>
+  <%= comment.comment_text %>
+  <% if comment.user == current_user %>
+    <p>Delete Btn</p>
+  <% end %>
+<% end %>

@@ -1,15 +1,15 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: [:edit, :update, :destroy]
+  before_action :set_comment, only: [:update, :destroy]
   before_action :set_post, only: [:create]
 
   # GET /comments/new
-  def new
-    @comment = Comment.new
-  end
+  #def new
+  #  @comment = Comment.new
+  #end
 
   # GET /comments/1/edit
-  def edit
-  end
+  #def edit
+  #end
 
   # POST /comments
   # POST /comments.json
@@ -19,8 +19,8 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
-        format.json { render :show, status: :created, location: @comment }
+        format.html { redirect_to @post, notice: 'Comment was successfully created.' }
+        #format.json { render :show, status: :created, location: @comment }
       else
         format.html { render :new }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
@@ -30,17 +30,17 @@ class CommentsController < ApplicationController
 
   # PATCH/PUT /comments/1
   # PATCH/PUT /comments/1.json
-  def update
-    respond_to do |format|
-      if @comment.update(comment_params)
-        format.html { redirect_to @comment, notice: 'Comment was successfully updated.' }
-        format.json { render :show, status: :ok, location: @comment }
-      else
-        format.html { render :edit }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  #def update
+    #respond_to do |format|
+      #if @comment.update(comment_params)
+        #format.html { redirect_to @comment, notice: 'Comment was successfully updated.' }
+        #format.json { render :show, status: :ok, location: @comment }
+      #else
+        #format.html { render :edit }
+        #format.json { render json: @comment.errors, status: :unprocessable_entity }
+      #end
+    #end
+  #end
 
   # DELETE /comments/1
   # DELETE /comments/1.json
@@ -64,6 +64,6 @@ class CommentsController < ApplicationController
     end
 
     def set_post
-      @post = Post.find(:post_id)
+      @post = Post.find(params[:post_id])
     end
 end
