@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:update, :destroy]
-  before_action :set_post, only: [:create]
+  before_action :set_post, only: [:create, :destroy]
 
   # GET /comments/new
   #def new
@@ -22,7 +22,7 @@ class CommentsController < ApplicationController
         format.html { redirect_to @post, notice: 'Comment was successfully created.' }
         #format.json { render :show, status: :created, location: @comment }
       else
-        format.html { render :new }
+        format.html { redirect_back(fallback_location: root_path) }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end
@@ -47,7 +47,7 @@ class CommentsController < ApplicationController
   def destroy
     @comment.destroy
     respond_to do |format|
-      format.html { redirect_to comments_url, notice: 'Comment was successfully destroyed.' }
+      format.html { redirect_to @post, notice: 'Comment was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

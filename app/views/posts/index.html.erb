@@ -1,24 +1,23 @@
 <div>
   <ul class="list-group">
     <% @posts.each do |post| %>
-      <li class="list-group-item">
+      <li class="list-group-item p-1">
         <div>
-          <%= link_to like_post_path(post), method: :put do %>
-            <%= fa_icon "sort-up" %>
-          <% end %>
-          <%= link_to dislike_post_path(post), method: :put do %>
-            <%= fa_icon "sort-down" %>
-          <% end %>
           <%= post.votes_for.size %>
+            <%= link_to like_post_path(post), method: :put do %>
+              <%= fa_icon "sort-up fa-stack-1x" %>
+            <% end %>
+            <%= link_to dislike_post_path(post), method: :put do %>
+              <%= fa_icon "sort-down fa-stack-1x" %>
+            <% end %>
           <%= link_to post.title, post %> -
-          <%= link_to post.url, target: "_blank" %>
+          <small><%= link_to post.url, target: "_blank" %></small>
           <% if post.user == current_user %>
             <%= link_to 'Edit', edit_post_path(post), class: "pull-right" %>
             <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: "pull-right" %>
           <% end %>        
         </div>
-        <small>By <%= post.user.email %> <%= time_ago_in_words(post.created_at) %></small>
-
+        <small>By <%= post.user.email %> <%= time_ago_in_words(post.created_at) %> ago  -  <%= link_to "#{post.comments.count} comments", post %></small>
       </li>
     <% end %>
   </ul>

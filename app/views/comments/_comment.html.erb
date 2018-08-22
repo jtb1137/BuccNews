@@ -1,7 +1,12 @@
-<%= div_for(comment) do %>
-  <%= comment.user.email %>
-  <%= comment.comment_text %>
-  <% if comment.user == current_user %>
-    <p>Delete Btn</p>
+<div class="my-4">
+  <%= div_for(comment) do %>
+    <%= comment.user.email %> <small><%= time_ago_in_words(comment.created_at) %> ago
+    <% if comment.user == current_user %>
+      <%= link_to 'delete', comment, method: :delete, data: { confirm: 'are you sure?'}, class: "pull-right pr-1" %>
+    <% end %>
+    </small>
+    <p>
+      <%= comment.comment_text %>
+    </p>
   <% end %>
-<% end %>
+</div>
