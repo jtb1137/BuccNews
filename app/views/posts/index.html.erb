@@ -3,7 +3,7 @@
     <% @posts.each do |post| %>
       <li class="list-group-item p-1">
         <div>
-          <%= post.votes_for.size %>
+          <%= post.weighted_score %>
             <%= link_to like_post_path(post), method: :put do %>
               <%= fa_icon "sort-up fa-stack-1x" %>
             <% end %>
