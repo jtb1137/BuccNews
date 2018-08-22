@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:update, :destroy]
-  before_action :set_post, only: [:create, :destroy]
+  before_action :set_post, only: [:create]
 
   # GET /comments/new
   #def new
@@ -19,7 +19,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @post, notice: 'Comment was successfully created.' }
+        format.html { redirect_to @post }
         #format.json { render :show, status: :created, location: @comment }
       else
         format.html { redirect_back(fallback_location: root_path) }
@@ -47,8 +47,8 @@ class CommentsController < ApplicationController
   def destroy
     @comment.destroy
     respond_to do |format|
-      format.html { redirect_to @post, notice: 'Comment was successfully destroyed.' }
-      format.json { head :no_content }
+      format.html { redirect_back(fallback_location: root_path) }
+      #format.json { head :no_content }
     end
   end
 
