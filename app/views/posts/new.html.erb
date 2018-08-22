@@ -1,9 +1,9 @@
-<div class="mx-auto" style="width:300px">
+<div>
   <h1 class="text-center">New Post</h1>
 
   <%= render 'form', post: @post %>
   <br>
-  <div class="text-center">
-    <%= link_to 'Back to Previous Page', posts_path %>
+  <div>
+    <%= link_to 'Back to Previous Page', :back %>
   </div>
 </div>
