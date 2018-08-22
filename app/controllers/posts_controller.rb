@@ -63,11 +63,17 @@ class PostsController < ApplicationController
   end
 
   def upvote
+    if @post.disliked_by current_user
+      @post.undisliked_by current_user
+    end
     @post.liked_by current_user
     redirect_back(fallback_location: root_path)
   end
 
   def downvote
+    if @post.liked_by current_user
+      @post.unliked_by current_user
+    end
     @post.disliked_by current_user
     redirect_back(fallback_location: root_path)
   end
